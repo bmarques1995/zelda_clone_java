@@ -1,9 +1,8 @@
-package graficos;
+package Zelda.JAVA.com;
 
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -23,14 +22,13 @@ public class Graficos extends Canvas implements Runnable
     private final double ns;
     private short frames;
     
-    private final BufferedImage imagem;
+    @SuppressWarnings("FieldNameHidesFieldInSuperclass")
+    private BufferedImage imagem;
     
     @SuppressWarnings("FieldNameHidesFieldInSuperclass")
     private final int WIDTH = 160;
-    
     @SuppressWarnings("FieldNameHidesFieldInSuperclass")
     private final int HEIGHT = 120;
-    
     private final int SCALE = 3;
     
     @SuppressWarnings({"OverridableMethodCallInConstructor", "LeakingThisInConstructor"})
@@ -62,7 +60,7 @@ public class Graficos extends Canvas implements Runnable
     
     public void tique()
     {
-        System.out.println("Tique");
+        
     }
     
     public void renderizar()
@@ -73,12 +71,14 @@ public class Graficos extends Canvas implements Runnable
             this.createBufferStrategy(3);
             return;
         }
+        
+        /*Tela inicial*/
         Graphics g = this.imagem.getGraphics();
         g.setColor(new Color(0, 127, 55));
         g.fillRect(0, 0, WIDTH, HEIGHT);
-        g.setFont(new Font("Arial",Font.BOLD,20));
-        g.setColor(Color.white);
-        g.drawString("E aí Java", 30, 30);
+        
+        
+        g.dispose();
         g = bs.getDrawGraphics();
         g.drawImage(imagem, 0, 0, WIDTH*SCALE, HEIGHT*SCALE, null);
         bs.show();
