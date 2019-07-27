@@ -1,4 +1,4 @@
-package graficos;
+package Zelda.JAVA.com;
 
 public class Main 
 {
