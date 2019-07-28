@@ -5,11 +5,11 @@ import java.awt.image.BufferedImage;
 
 public class Entidade 
 {
-    private int x;
-    private int y;
-    private int largura;
-    private int altura;
-    private BufferedImage sprite;
+    protected int x;
+    protected int y;
+    protected int largura;
+    protected int altura;
+    protected BufferedImage sprite;
 
     public Entidade(int x, int y, int largura, int altura, BufferedImage sprite) {
         this.x = x;
