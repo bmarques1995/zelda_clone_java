@@ -2,8 +2,6 @@ package Zelda.Java.graficos.com;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 public class SpriteSheet 
@@ -12,13 +10,10 @@ public class SpriteSheet
     private BufferedImage spritesheet;
 
     
-    public SpriteSheet(String dir) 
+    public SpriteSheet(String dir) throws IOException 
     {
-        try {
-            spritesheet = ImageIO.read(getClass().getResource(dir));
-        } catch (IOException ex) {
-            Logger.getLogger(SpriteSheet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        System.out.println("Diretório atual: " + new java.io.File( "." ).getCanonicalPath());
+        spritesheet = ImageIO.read(getClass().getResourceAsStream(dir));
     }
     
     public BufferedImage getSprite(int x, int y, int largura, int altura)

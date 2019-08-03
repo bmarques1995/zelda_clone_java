@@ -1,11 +1,17 @@
-package Zelda.JAVA.main.com;
+package Zelda.Java.main.com;
 
+import Zelda.Java.entidades.com.Entidade;
+import Zelda.Java.entidades.com.Jogador;
+import Zelda.Java.graficos.com.SpriteSheet;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -31,14 +37,24 @@ public class Jogo extends Canvas implements Runnable
     private final int HEIGHT = 120;
     private final int SCALE = 3;
     
+    public List<Entidade> entidades;
+    public SpriteSheet spritesheet;
+    
     @SuppressWarnings({"OverridableMethodCallInConstructor", "LeakingThisInConstructor"})
-    public Jogo(double FPS)
+    public Jogo(double FPS) throws IOException
     {
         super();
         this.setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
         this.IniciarFrame();
         this.ns = Math.pow(10,9) / FPS;
+        
         this.imagem = new BufferedImage(160,120,BufferedImage.TYPE_INT_RGB);
+        this.entidades = new ArrayList<>();
+        
+        this.spritesheet = new SpriteSheet("./assets/spritesheet.png");
+        
+        this.entidades.add(new Jogador(0,0,16,16, spritesheet.getSprite(32, 0, 16, 16)));
+        
     }
     
     private void IniciarFrame() 
@@ -76,6 +92,9 @@ public class Jogo extends Canvas implements Runnable
         Graphics g = this.imagem.getGraphics();
         g.setColor(new Color(0, 127, 55));
         g.fillRect(0, 0, WIDTH, HEIGHT);
+        
+        for (Entidade entidade : entidades) 
+            entidade.render(g);
         
         
         g.dispose();

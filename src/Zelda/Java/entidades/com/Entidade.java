@@ -1,4 +1,4 @@
-package Zelda.JAVA.entidades.com;
+package Zelda.Java.entidades.com;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
