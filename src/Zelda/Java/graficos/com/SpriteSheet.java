@@ -1,6 +1,7 @@
 package Zelda.Java.graficos.com;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
@@ -12,8 +13,7 @@ public class SpriteSheet
     
     public SpriteSheet(String dir) throws IOException 
     {
-        System.out.println("Diretório atual: " + new java.io.File( "." ).getCanonicalPath());
-        spritesheet = ImageIO.read(getClass().getResourceAsStream(dir));
+        spritesheet = ImageIO.read(new File(dir));
     }
     
     public BufferedImage getSprite(int x, int y, int largura, int altura)

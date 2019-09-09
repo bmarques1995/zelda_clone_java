@@ -51,7 +51,7 @@ public class Jogo extends Canvas implements Runnable
         this.imagem = new BufferedImage(160,120,BufferedImage.TYPE_INT_RGB);
         this.entidades = new ArrayList<>();
         
-        this.spritesheet = new SpriteSheet("./assets/spritesheet.png");
+        this.spritesheet = new SpriteSheet("./src/assets/spritesheet.png");
         
         this.entidades.add(new Jogador(0,0,16,16, spritesheet.getSprite(32, 0, 16, 16)));
         
